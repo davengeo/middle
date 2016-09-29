@@ -1,0 +1,14 @@
+{
+  "name": "middle-js",
+  "version": "1.0.0",
+  "description": "module for middleware micro-services",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "me@davengeo.com",
+  "license": "UNLICENSED"
+}
