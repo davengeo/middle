@@ -3,7 +3,6 @@ const centralConfig = require('./lib/central-config'),
       logger = require('./lib/logger'),
       app = require('./lib/express-worker');
 
-
 module.exports = {
     centralConfig: centralConfig,
     proxy: proxy,
