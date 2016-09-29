@@ -1,5 +1,5 @@
 {
-  "name": "middle-js",
+  "name": "@proximus/middle-js",
   "version": "1.0.0",
   "description": "module for middleware micro-services",
   "main": "index.js",
@@ -7,8 +7,13 @@
     "test": "test"
   },
   "keywords": [
-    "node"
+    "node",
+    "microservices",
+    "configuration"
   ],
   "author": "me@davengeo.com",
-  "license": "UNLICENSED"
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.0"
+  }
 }
