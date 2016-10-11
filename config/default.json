@@ -16,5 +16,19 @@
     "colorize": true,
     "humanReadableUnhandledException": true,
     "timestamp": true
+  },
+  "config-1": {
+    "routing": {
+      ".*/test1": "http://localhost:3001/"
+    },
+    "default": "http://localhost:3000",
+    "port": 4010
+  },
+  "config-err": {
+    "routing": {
+      ".*/test1": "http://localhost:3001/"
+    },
+    "default": "http://localhost:3000",
+    "port": "bad-port"
   }
 }
