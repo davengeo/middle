@@ -1,7 +1,7 @@
 {
   "name": "@proximus/middle-js",
   "version": "1.0.0",
-  "description": "module for middleware micro-services",
+  "description": "Module for middleware micro-services",
   "main": "index.js",
   "scripts": {
     "test": "test"
@@ -9,10 +9,17 @@
   "keywords": [
     "node",
     "microservices",
-    "configuration"
+    "configuration",
+    "proxy"
   ],
   "author": "me@davengeo.com",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-env": "^0.4.0",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0"
   },

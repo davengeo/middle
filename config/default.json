@@ -1,0 +1,20 @@
+{
+  "fileLog": {
+    "level": "debug",
+    "filename": "./logs/default-logs.log",
+    "handleExceptions": true,
+    "json": true,
+    "timestamp": true,
+    "maxsize": 5242880,
+    "maxFiles": 5,
+    "colorize": false
+  },
+  "consoleLog": {
+    "level": "debug",
+    "handleExceptions": true,
+    "json": false,
+    "colorize": true,
+    "humanReadableUnhandledException": true,
+    "timestamp": true
+  }
+}
