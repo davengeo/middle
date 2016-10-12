@@ -4,7 +4,7 @@
   "description": "Module for middleware micro-services",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "gulp coverage"
   },
   "keywords": [
     "node",
