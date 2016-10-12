@@ -6,6 +6,10 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['watch', 'coverage']);
 
+gulp.doneCallback = function (err) {
+    process.exit(err ? 1 : 0);
+};
+
 gulp.task('watch', function() {
     gulp.watch(['gulpfile.js', 'lib/**', 'test/**'], ['mocha']);
 });
@@ -37,9 +41,7 @@ gulp.task('ci', ['pre-test'], function() {
     return gulp.src(['test/**/*.js'])
         .pipe(mocha())
         .pipe(istanbul.writeReports())
-        .pipe(istanbul.enforceThresholds({ thresholds: { global: 50 } }))
-        .once('end', function () {
-            process.exit();
-        });
+        .pipe(istanbul.enforceThresholds({ thresholds: { global: 50 } }));
+
 });
 
