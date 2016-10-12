@@ -1,3 +1,4 @@
 node_modules
 /middle-js.iml
 /.idea/
+/coverage/

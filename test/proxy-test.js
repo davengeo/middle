@@ -7,7 +7,7 @@ var app = express();
 var appTarget = express();
 var serverApp, serverTarget;
 
-describe("A module to proxy the some configurable target", function() {
+describe("A module to proxy to a configurable target", function() {
 
     const MODULE_NAME = '../lib/proxy';
 
@@ -41,7 +41,6 @@ describe("A module to proxy the some configurable target", function() {
         });
     }, 2000);
 
-
     it("whether used in express should proxy post requests to conf.default", function (done) {
         var resultInProxy = {name: 'tobi'};
         appTarget.post('/user', function (req, res) {
@@ -60,6 +59,24 @@ describe("A module to proxy the some configurable target", function() {
                     done();
                 });
         });
+    }, 2000);
+
+    it('whether not default it should respond a 500', function(done) {
+        config
+            .getValue('config-not-default')
+            .then(config => {
+                var proxy = requireUncached(MODULE_NAME).build(config);
+
+                request(proxy)
+                    .post('/test1/user')
+                    .expect(500, {})
+                    .end(function (err) {
+                        proxy.close();
+                        if (err) throw err;
+                        done();
+                    });
+            });
+
     }, 2000);
 
     it("whether config is wrong should fail", function (done) {
