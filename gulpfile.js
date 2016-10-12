@@ -30,10 +30,16 @@ gulp.task('coverage', ['pre-test'], function() {
     return gulp.src(['test/**/*.js'])
         .pipe(mocha())
         .pipe(istanbul.writeReports())
+        .pipe(istanbul.enforceThresholds({ thresholds: { global: 50 } }));
+});
+
+gulp.task('ci', ['pre-test'], function() {
+    return gulp.src(['test/**/*.js'])
+        .pipe(mocha())
+        .pipe(istanbul.writeReports())
         .pipe(istanbul.enforceThresholds({ thresholds: { global: 50 } }))
         .once('end', function () {
             process.exit();
         });
 });
-
 
