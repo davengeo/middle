@@ -5,6 +5,7 @@ const util = require('util'),
 describe("A central configuration module", function() {
 
     const moduleName = '../lib/central-config';
+    const mockModuleName = '../lib/central-config-mock';
 
     it("it should be an environment variable with the config server url", function() {
         process.env.COUCHBASE_CONFIG_BUCKET = 1;
@@ -98,6 +99,26 @@ describe("A central configuration module", function() {
             expect(err.message).to.be.equal('Root directory configuration pending');
         }
     });
+
+    it("whether mock module configured and get root directory it should match", function() {
+        var centralConfig = requireUncached(mockModuleName);
+        centralConfig.config('test-value');
+        expect(centralConfig.rootDir()).to.be.equal('test-value');
+
+    });
+
+    it("whether mock module has configured a default value it always respond with it", function() {
+        var centralConfig = requireUncached(mockModuleName);
+        centralConfig.setDefault('test-value');
+        expect(centralConfig.getValue('hazard')).to.be.equal('test-value');
+    });
+
+    it("whether mock module has configured a value it should respond with it", function() {
+        var centralConfig = requireUncached(mockModuleName);
+        centralConfig.setValue('hazard', 'test-new-value');
+        expect(centralConfig.getValue('hazard')).to.be.equal('test-new-value');
+    });
+
 });
 
 function requireUncached(module){

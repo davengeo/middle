@@ -1,7 +1,8 @@
 const config = require('./lib/central-config'),
       proxy = require('./lib/proxy'),
       logger = require('./lib/logger'),
-      app = require('./lib/express-worker');
+      app = require('./lib/express-worker'),
+      commonResp = require('./lib/common-response');
 
 /*
  *    Facade for the middle-js components.
@@ -11,5 +12,6 @@ module.exports = {
     config: config,
     proxy: proxy,
     logger: logger,
-    app: app
+    app: app,
+    commonResp: commonResp
 };

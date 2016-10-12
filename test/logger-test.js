@@ -1,8 +1,7 @@
 const util = require('util'),
       path = require('path'),
       mockery = require('mockery'),
-      configMock = require ('../lib/central-config-mock'),
-      expect = require('chai').expect;
+      configMock = require ('../lib/central-config-mock');
 
 mockery.enable({
     warnOnReplace: true,
@@ -10,17 +9,15 @@ mockery.enable({
 });
 
 
-describe("A common logger module", function() {
+describe("This is a common logger module", function() {
 
-    before(function() {
+    before(() => {
         mockery.enable();
     });
 
-    after(function() {
+    after(() => {
         mockery.disable();
     });
-
-
 
     const moduleName = '../lib/logger';
 
@@ -53,7 +50,7 @@ describe("A common logger module", function() {
             });
     }, 2000);
 
-    it("whether all config is ok should assign default values", function (done) {
+    it(" whether all config is ok should assign its values", function (done) {
         mockery.registerSubstitute('./central-config', './central-config-mock');
         configMock.setValue('fileLog', {
             level: 'info',
@@ -74,7 +71,7 @@ describe("A common logger module", function() {
         });
         var logger = requireUncached(moduleName)
             .on('ready', function() {
-                logger.info('default message transport without central configuration');
+                logger.info('default message transport with central configuration');
                 done();
             });
     }, 2000);
