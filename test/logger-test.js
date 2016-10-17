@@ -24,7 +24,10 @@ describe("This is a common logger module", function() {
     it("whether file config is wrong should assign default values", function (done) {
         mockery.registerSubstitute('./central-config', './central-config-mock');
 
-        var logger = requireUncached(moduleName)
+        var logger = requireUncached(moduleName);
+
+        logger.init();
+        logger
             .on('ready', function() {
                 logger.info('default message transport without central configuration');
                 done();
@@ -43,7 +46,9 @@ describe("This is a common logger module", function() {
             maxFiles: 5,
             colorize: false
         });
-        var logger = requireUncached(moduleName)
+        var logger = requireUncached(moduleName);
+        logger.init();
+        logger
             .on('ready', function() {
                 logger.info('default message transport without central configuration');
                 done();
@@ -69,7 +74,9 @@ describe("This is a common logger module", function() {
             humanReadableUnhandledException: true,
             timestamp: true
         });
-        var logger = requireUncached(moduleName)
+        var logger = requireUncached(moduleName);
+        logger.init();
+        logger
             .on('ready', function() {
                 logger.info('default message transport with central configuration');
                 done();
@@ -77,7 +84,9 @@ describe("This is a common logger module", function() {
     }, 2000);
 
     it(" should provide a stream function for express/morgan", function (done) {
-        var logger = requireUncached(moduleName)
+        var logger = requireUncached(moduleName);
+        logger.init();
+        logger
             .on('ready', function() {
                 logger.stream.write('default message transport without central configuration');
                 done();

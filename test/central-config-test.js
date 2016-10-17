@@ -34,10 +34,10 @@ describe("A central configuration module", function() {
     });
 
     it("whether central configuration it should be loaded from couchBase", function(done) {
-        process.env.COUCHBASE_CONFIG_BUCKET = 'couchbase://el3771.bc/';
+        process.env.COUCHBASE_CONFIG_BUCKET = 'couchbase://el3772.bc/';
         var centralConfig = requireUncached(moduleName);
-        centralConfig.config(path.resolve(__dirname, '..'));
-        expect(centralConfig.configUrl).to.be.equal('couchbase://el3771.bc/');
+        centralConfig.init(path.resolve(__dirname, '..'));
+        expect(centralConfig.configUrl).to.be.equal('couchbase://el3772.bc/');
 
         expect(centralConfig.getValue('fileLog')).not.to.be.equal('undefined');
 
@@ -50,11 +50,11 @@ describe("A central configuration module", function() {
     }, 4000);
 
     it("whether central configuration but key is not in couchBase it should throw an error", function(done) {
-        process.env.COUCHBASE_CONFIG_BUCKET = 'couchbase://el3771.bc/';
+        process.env.COUCHBASE_CONFIG_BUCKET = 'couchbase://el3772.bc/';
         var centralConfig = requireUncached(moduleName);
-        centralConfig.config(path.resolve(__dirname, '..'));
+        centralConfig.init(path.resolve(__dirname, '..'));
 
-        expect(centralConfig.configUrl).to.be.equal('couchbase://el3771.bc/');
+        expect(centralConfig.configUrl).to.be.equal('couchbase://el3772.bc/');
         centralConfig.getValue('NotInCouchBase')
             .then(function() {
                 fail('this key is not in couchbase');
@@ -81,31 +81,6 @@ describe("A central configuration module", function() {
             });
     }, 2000);
 
-    it("whether module is configured it should return root folder", function() {
-        delete process.env.COUCHBASE_CONFIG_BUCKET;
-        var centralConfig = requireUncached(moduleName);
-        let mainDir = path.resolve(__dirname, '..');
-        centralConfig.config(mainDir);
-        expect(centralConfig.rootDir()).to.be.equal(mainDir);
-    });
-
-    it("whether module has not been configured and get root directory it should throw error", function() {
-        delete process.env.COUCHBASE_CONFIG_BUCKET;
-        var centralConfig = requireUncached(moduleName);
-        try {
-            centralConfig.rootDir();
-            fail('cannot reach this');
-        } catch (err) {
-            expect(err.message).to.be.equal('Root directory configuration pending');
-        }
-    });
-
-    it("whether mock module configured and get root directory it should match", function() {
-        var centralConfig = requireUncached(mockModuleName);
-        centralConfig.config('test-value');
-        expect(centralConfig.rootDir()).to.be.equal('test-value');
-
-    });
 
     it("whether mock module has configured a default value it always respond with it", function() {
         var centralConfig = requireUncached(mockModuleName);
