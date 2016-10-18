@@ -81,6 +81,37 @@ describe("A central configuration module", function() {
             });
     }, 2000);
 
+    it("whether module has configured it should keep the root directory", function() {
+        var centralConfig = requireUncached(moduleName);
+        centralConfig.init(path.resolve(__dirname, '..'));
+        expect(centralConfig.getRootDir()).to.be.equal(path.resolve(__dirname, '..'));
+    });
+
+    it("whether module not configured it should throw error when asked for root directory", function() {
+        var centralConfig = requireUncached(moduleName);
+        try {
+            centralConfig.getRootDir();
+            fail()
+        } catch (err) {
+            expect(err).to.be.equal('Module not initialized, use config.init before this');
+        }
+    });
+
+    it("whether mock module has configured it should keep the root directory", function() {
+        var centralConfig = requireUncached(mockModuleName);
+        centralConfig.init(path.resolve(__dirname, '..'));
+        expect(centralConfig.getRootDir()).to.be.equal(path.resolve(__dirname, '..'));
+    });
+
+    it("whether mock module not configured it should throw error when asked for root directory", function() {
+        var centralConfig = requireUncached(mockModuleName);
+        try {
+            centralConfig.getRootDir();
+            fail()
+        } catch (err) {
+            expect(err).to.be.equal('Module not initialized, use config.init before this');
+        }
+    });
 
     it("whether mock module has configured a default value it always respond with it", function() {
         var centralConfig = requireUncached(mockModuleName);
