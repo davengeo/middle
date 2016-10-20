@@ -1,7 +1,7 @@
 {
   "name": "@proximus/middle-js",
   "version": "1.0.0",
-  "description": "Module for middleware micro-services",
+  "description": "Module to help the creation of middleware using node.js and couchbase",
   "main": "index.js",
   "scripts": {
     "test": "gulp ci"
@@ -12,7 +12,24 @@
     "configuration",
     "proxy"
   ],
-  "author": "me@davengeo.com",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "http://el2604.bc:8585/DOF-Labs/middle-js/issues",
+    "email": "david.navarro.ext@proximus.com"
+  },
+  "author": {
+    "name" : "David Navarro",
+    "email" : "david.navarro.ext@proximus.com",
+    "url" : "http://davengeo.com/"
+  },
+  "contributors": [
+    {
+      "name" : "David Navarro",
+      "email" : "david.navarro.ext@proximus.com",
+      "url" : "http://davengeo.com/"
+    }
+  ],
+  "repository": { "type" : "git", "url" : "http://el2604.bc:8585/DOF-Labs/middle-js.git" },
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
