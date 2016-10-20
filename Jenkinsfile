@@ -20,6 +20,6 @@ try {
 } catch (e){
 	currentBuild.result = "FAILED"
     mail body: "Please go to ${env.BUILD_URL}console.", from: "architecture.jenkins@belgacom.be", subject: "Build failed in Jenkins: ${env.JOB_NAME} # ${env.BUILD_NUMBER}", to: "pxs.dof.dev.team@proximus.com"
-    throw e
+    throw e as java.lang.Throwable
 }
 
