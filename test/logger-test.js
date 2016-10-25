@@ -8,7 +8,6 @@ mockery.enable({
     warnOnUnregistered: false
 });
 
-
 describe("This is a common logger module", function() {
 
     before(() => {
@@ -21,6 +20,7 @@ describe("This is a common logger module", function() {
 
     const moduleName = '../lib/logger';
 
+    //noinspection JSCheckFunctionSignatures
     it("whether file config is wrong should assign default values", function (done) {
         mockery.registerSubstitute('./central-config', './central-config-mock');
 
@@ -32,9 +32,9 @@ describe("This is a common logger module", function() {
                 logger.info('default message transport without central configuration');
                 done();
             });
-    }, 2000);
+    });
 
-
+    //noinspection JSCheckFunctionSignatures
     it("whether console config is wrong should assign default values", function (done) {
         mockery.registerSubstitute('./central-config', './central-config-mock');
         configMock.setValue('fileLog', {
@@ -53,8 +53,9 @@ describe("This is a common logger module", function() {
                 logger.info('default message transport without central configuration');
                 done();
             });
-    }, 2000);
+    });
 
+    //noinspection JSCheckFunctionSignatures
     it(" whether all config is ok should assign its values", function (done) {
         mockery.registerSubstitute('./central-config', './central-config-mock');
         configMock.setValue('fileLog', {
@@ -75,23 +76,30 @@ describe("This is a common logger module", function() {
             timestamp: true
         });
         var logger = requireUncached(moduleName);
-        logger.init();
         logger
-            .on('ready', function() {
-                logger.info('default message transport with central configuration');
-                done();
+            .init()
+            .then(() => {
+                console.log('logger init done');
             });
-    }, 2000);
 
+        logger.on('ready', function() {
+            logger.info('default message transport with central configuration');
+            done();
+        });
+
+    });
+
+    //noinspection JSCheckFunctionSignatures
     it(" should provide a stream function for express/morgan", function (done) {
         var logger = requireUncached(moduleName);
         logger.init();
         logger
             .on('ready', function() {
+                //noinspection JSUnresolvedFunction
                 logger.stream.write('default message transport without central configuration');
                 done();
             });
-    }, 2000);
+    });
 
 });
 

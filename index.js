@@ -1,4 +1,5 @@
 const config = require('./lib/central-config'),
+      configMock = require('./lib/central-config-mock'),
       proxy = require('./lib/proxy'),
       logger = require('./lib/logger'),
       app = require('./lib/express-worker'),
@@ -6,8 +7,9 @@ const config = require('./lib/central-config'),
 
 /*
  *    Facade for the middle-js components.
- *    The initialization should be made once in the main js.
- *    Simple is better.
+ *    The initialization should be made once in
+  *   the main js of the host application.
+ *    Remember: -Simple is better-.
  */
 function _init(rootDir) {
     config.init(rootDir);
@@ -16,6 +18,7 @@ function _init(rootDir) {
         .then(() => {
             return {
                 config: config,
+                configMock: configMock,
                 proxy: proxy,
                 logger: logger,
                 app: app,
@@ -27,6 +30,7 @@ function _init(rootDir) {
 module.exports = {
     init: _init,
     config: config,
+    configMock: configMock,
     proxy: proxy,
     logger: logger,
     app: app,
