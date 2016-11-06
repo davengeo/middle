@@ -1,7 +1,7 @@
 const util = require('util'),
       path = require('path'),
       mockery = require('mockery'),
-      configMock = require ('../lib/central-config-mock');
+      configMock = require ('../lib/central-config').mock;
 
 mockery.enable({
     warnOnReplace: true,
@@ -57,8 +57,6 @@ describe("This is a common logger module", function() {
 
     //noinspection JSCheckFunctionSignatures
     it(" whether all config is ok should assign its values", function (done) {
-        mockery.registerSubstitute('./central-config', './central-config-mock');
-        mockery.registerSubstitute('winston', './central-config-mock');
         configMock.setValue('fileLog', {
             level: 'info',
             filename: './logs/default-logs.log',
