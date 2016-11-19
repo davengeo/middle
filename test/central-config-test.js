@@ -1,5 +1,5 @@
-const util = require('util'),
-      path = require('path'),
+const util   = require('util'),
+      path   = require('path'),
       expect = require('chai').expect;
 
 describe("A central configuration module", function() {
@@ -30,10 +30,12 @@ describe("A central configuration module", function() {
 
         expect(centralConfig.getValue('fileLog')).not.to.be.equals('undefined');
 
-        centralConfig.getValue('fileLog').then(value => {
-            expect(value.level).to.be.equal('debug');
-            done();
-        }, 2000);
+        centralConfig
+            .getValue('fileLog')
+            .then(value => {
+                expect(value.level).to.be.equal('debug');
+                done();
+            });
     });
 
     //noinspection JSCheckFunctionSignatures
@@ -46,10 +48,10 @@ describe("A central configuration module", function() {
         expect(centralConfig.getValue('fileLog')).not.to.be.equal('undefined');
 
         centralConfig.getValue('fileLog')
-            .then(function(value) {
-                expect(value.level).to.be.equal('info');
-                done();
-            });
+                     .then(function(value) {
+                         expect(value.level).to.be.equal('info');
+                         done();
+                     });
     });
 
     //noinspection JSCheckFunctionSignatures
@@ -60,14 +62,14 @@ describe("A central configuration module", function() {
 
         expect(centralConfig.configUrl).to.be.equal('couchbase://el3772.bc/');
         centralConfig.getValue('NotInCouchBase')
-            .then(function() {
-                expect.fail('this key is not in couchbase');
-            })
-            .catch(function(err) {
-                expect(err.message).to.be.equal('The key does not exist on the server');
-                expect(err.code).to.be.equal(13);
-                done();
-            });
+                     .then(function() {
+                         expect.fail('this key is not in couchbase');
+                     })
+                     .catch(function(err) {
+                         expect(err.message).to.be.equal('The key does not exist on the server');
+                         expect(err.code).to.be.equal(13);
+                         done();
+                     });
     });
 
     //noinspection JSCheckFunctionSignatures
@@ -77,13 +79,13 @@ describe("A central configuration module", function() {
         expect(centralConfig.configUrl).to.be.equal('local');
         var badKey = 'NotInLocal';
         centralConfig.getValue(badKey)
-            .then(function() {
-                expect.fail('this key is not in couchbase');
-            })
-            .catch(function(err) {
-                expect(err.message).to.be.equal(util.format('Configuration property "%s" is not defined', badKey));
-                done();
-            });
+                     .then(function() {
+                         expect.fail('this key is not in couchbase');
+                     })
+                     .catch(function(err) {
+                         expect(err.message).to.be.equal(util.format('Configuration property "%s" is not defined', badKey));
+                         done();
+                     });
     });
 
     //noinspection JSCheckFunctionSignatures
@@ -99,7 +101,7 @@ describe("A central configuration module", function() {
         try {
             centralConfig.getRootDir();
             expect.fail()
-        } catch (err) {
+        } catch(err) {
             expect(err).to.be.equal('Module not initialized, use config.init before this');
         }
     });
@@ -117,7 +119,7 @@ describe("A central configuration module", function() {
         try {
             centralConfig.getRootDir();
             expect.fail()
-        } catch (err) {
+        } catch(err) {
             expect(err).to.be.equal('Module not initialized, use config.init before this');
         }
     });
@@ -138,7 +140,7 @@ describe("A central configuration module", function() {
 
 });
 
-function requireUncached(module){
+function requireUncached(module) {
     delete require.cache[require.resolve(module)];
     return require(module);
 }

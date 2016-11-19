@@ -18,18 +18,21 @@
     "email": "david.navarro.ext@proximus.com"
   },
   "author": {
-    "name" : "David Navarro",
-    "email" : "david.navarro.ext@proximus.com",
-    "url" : "http://davengeo.com/"
+    "name": "David Navarro",
+    "email": "david.navarro.ext@proximus.com",
+    "url": "http://davengeo.com/"
   },
   "contributors": [
     {
-      "name" : "David Navarro",
-      "email" : "david.navarro.ext@proximus.com",
-      "url" : "http://davengeo.com/"
+      "name": "David Navarro",
+      "email": "david.navarro.ext@proximus.com",
+      "url": "http://davengeo.com/"
     }
   ],
-  "repository": { "type" : "git", "url" : "http://el2604.bc:8585/DOF-Labs/middle-js.git" },
+  "repository": {
+    "type": "git",
+    "url": "http://el2604.bc:8585/DOF-Labs/middle-js.git"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
@@ -40,6 +43,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
     "mockery": "^2.0.0",
+    "simple-mock": "^0.7.3",
     "supertest": "^2.0.0"
   },
   "dependencies": {
