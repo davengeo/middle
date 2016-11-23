@@ -12,8 +12,8 @@ try {
             stage 'test'
                 sh 'npm test'
 
-            stage 'publish'
-                sh 'gulp release && npm publish'
+//            stage 'publish'
+//                sh 'gulp release && npm publish'
 
             currentBuild.result = "SUCCESS"
             mail body: "Build was a success! Check details at ${env.BUILD_URL}console.", from: "architecture.jenkins@belgacom.be", subject: "Build SUCCESS in Jenkins: ${env.JOB_NAME} # ${env.BUILD_NUMBER}", to: "pxs.dof.dev.team@proximus.com"
