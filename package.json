@@ -1,6 +1,6 @@
 {
   "name": "@proximus/middle-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "basic middleware library for node.js and couchbase",
   "main": "index.js",
   "scripts": {
