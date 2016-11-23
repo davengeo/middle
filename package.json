@@ -1,10 +1,11 @@
 {
   "name": "@proximus/middle-js",
   "version": "1.0.0",
-  "description": "Module to help the creation of middleware by using node.js and couchbase",
+  "description": "basic middleware library for node.js and couchbase",
   "main": "index.js",
   "scripts": {
-    "test": "gulp ci"
+    "test": "gulp ci",
+    "release": "gulp release"
   },
   "keywords": [
     "node",
@@ -36,27 +37,34 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
+    "gulp-bump": "^2.5.0",
     "gulp-env": "^0.4.0",
+    "gulp-git": "^1.12.0",
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
+    "gulp-release-tasks": "0.0.3",
     "gulp-util": "^3.0.7",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
     "mockery": "^2.0.0",
+    "run-sequence": "^1.2.2",
     "simple-mock": "^0.7.3",
     "supertest": "^2.0.0"
   },
   "dependencies": {
     "bluebird": "3.4.6",
-    "body-parser": "^1.15.2",
+    "body-parser": "1.15.2",
     "config": "1.21.0",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "1.4.3",
     "couchbase": "2.2.2",
     "express": "4.14.0",
     "http-proxy": "1.15.1",
     "http-proxy-rules": "1.0.1",
     "lodash": "4.16.2",
-    "morgan": "^1.7.0",
+    "morgan": "1.7.0",
     "winston": "2.2.0"
+  },
+  "publishConfig": {
+    "registry": "http://el2604.bc:8080"
   }
 }

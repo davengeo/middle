@@ -10,8 +10,11 @@ try {
 
 
             stage 'test'
-                sh 'npm test'
-                archive includes: 'coverage/**'
+                sh 'npm run ci'
+
+            stage publish
+                sh 'npm run release'
+
             currentBuild.result = "SUCCESS"
             mail body: "Build was a success! Check details at ${env.BUILD_URL}console.", from: "architecture.jenkins@belgacom.be", subject: "Build SUCCESS in Jenkins: ${env.JOB_NAME} # ${env.BUILD_NUMBER}", to: "pxs.dof.dev.team@proximus.com"
         }
