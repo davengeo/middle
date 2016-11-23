@@ -12,7 +12,7 @@ try {
             stage 'test'
                 sh 'npm test'
 
-            stage publish
+            stage 'publish'
                 sh 'npm run release'
 
             currentBuild.result = "SUCCESS"
