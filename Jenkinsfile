@@ -10,7 +10,7 @@ try {
 
 
             stage 'test'
-                sh 'npm run ci'
+                sh 'npm test'
 
             stage publish
                 sh 'npm run release'
