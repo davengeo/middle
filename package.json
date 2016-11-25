@@ -62,7 +62,8 @@
     "http-proxy-rules": "1.0.1",
     "lodash": "4.16.2",
     "morgan": "1.7.0",
-    "winston": "2.2.0"
+    "winston": "2.2.0",
+    "winston-couchbase": "0.0.5"
   },
   "publishConfig": {
     "registry": "http://el2604.bc:8080"
