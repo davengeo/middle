@@ -1,6 +1,5 @@
 const util       = require('util'),
       path       = require('path'),
-      expect     = require('chai').expect,
       mockery    = require('mockery'),
       simple     = require('simple-mock'),
       winston    = require('winston'),
@@ -30,7 +29,7 @@ describe("This is the central logger module", function() {
 
     //noinspection JSCheckFunctionSignatures
     it("whether file config is wrong should assign default values", function(done) {
-        var logger = requireUncached(moduleName);
+        let logger = requireUncached(moduleName);
         logger.init();
         logger
             .on('ready', function() {
@@ -50,7 +49,7 @@ describe("This is the central logger module", function() {
             maxFiles:         5,
             colorize:         false
         });
-        var logger = requireUncached(moduleName);
+        let logger = requireUncached(moduleName);
         logger.init();
         logger
             .on('ready', function() {
@@ -61,7 +60,7 @@ describe("This is the central logger module", function() {
 
     //noinspection JSCheckFunctionSignatures
     it(" should provide a stream function for express/morgan", function(done) {
-        var logger = requireUncached(moduleName);
+        let logger = requireUncached(moduleName);
         logger.init();
         logger
             .on('ready', function() {
